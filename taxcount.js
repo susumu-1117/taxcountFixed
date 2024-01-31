@@ -12,13 +12,13 @@ taxcountButton.onclick = () => {
   const tax = parseInt(taxselect.value); // 税率
   let taxprice = null; // 税込価格
   if (tax === 5) {
-    taxprice = Math.floor(price * 1.05); // 5%
+    taxprice = Math.round(price * 1.05); // 5%
     console.log(taxprice);
   } else if (tax === 8) {
-    taxprice = Math.floor(price * 1.08); // 8%
+    taxprice = Math.round(price * 1.08); // 8%
     console.log(taxprice);
   } else if (tax === 10) {
-    taxprice = Math.floor(price * 1.1); // 10%
+    taxprice = Math.round(price * 1.1); // 10%
     console.log(taxprice);
   } else {
     return;
@@ -57,13 +57,13 @@ discountBuuton.onclick = () => {
   let discountedPrice = price * (1 - discountPercent / 100); // 割引後価格
   let totalPrice = null;
   if (tax === 5) {
-    totalPrice = Math.floor(discountedPrice * 1.05); // 5%
+    totalPrice = Math.round(discountedPrice * 1.05); // 5%
     console.log(totalPrice);
   } else if (tax === 8) {
-    totalPrice = Math.floor(discountedPrice * 1.08); // 8%
+    totalPrice = Math.round(discountedPrice * 1.08); // 8%
     console.log(totalPrice);
   } else if (tax === 10) {
-    totalPrice = Math.floor(discountedPrice * 1.1); // 10%
+    totalPrice = Math.round(discountedPrice * 1.1); // 10%
     console.log(totalPrice);
   } else {
     return;
