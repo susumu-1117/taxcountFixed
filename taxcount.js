@@ -6,24 +6,34 @@ const discount = document.getElementById('discount');
 const discountBuuton = document.getElementById('discount-button');
 const resultDivision = document.getElementById('result-area');
 
-// 税込価格
+// 税込価格の計算
 taxcountButton.onclick = () => {
   const price = parseInt(priceInput.value); // 元価格
   const tax = parseInt(taxselect.value); // 税率
   let taxprice = null; // 税込価格
   if (tax === 5) {
-    taxprice = Math.round(price * 1.05); // 5%
+    taxprice = Math.floor(price * 1.05); // 消費5%
     console.log(taxprice);
   } else if (tax === 8) {
-    taxprice = Math.round(price * 1.08); // 8%
+    taxprice = Math.floor(price * 1.08); // 消費8%
     console.log(taxprice);
   } else if (tax === 10) {
-    taxprice = Math.round(price * 1.1); // 10%
+    taxprice = Math.floor(price * 1.1); // 消費10%
     console.log(taxprice);
+  } else if(priceInput.value === '' || taxselect.value === '') { // 価格、税率が空欄の場合
+    alert('価格と税率の両方を入力してください');
+    return;
   } else {
     return;
   }
 
+  if (taxselect.value !== '' && priceInput.value === '') { // 税率のみ入力されている場合
+    alert('価格を入力してください');
+    return;
+  }
+ 
+  console.log(priceInput.value);
+  console.log(taxselect.value);
   resultDivision.innerText = '';
 
 // headerDivision の作成
@@ -49,7 +59,7 @@ resultDivision.appendChild(bodyDivision);
 
 }
 
-// 割引価格
+// 割引価格の計算
 discountBuuton.onclick = () => {
   const price = parseInt(priceInput.value); // 元価格
   const tax = parseInt(taxselect.value); // 税率
@@ -57,17 +67,26 @@ discountBuuton.onclick = () => {
   let discountedPrice = price * (1 - discountPercent / 100); // 割引後価格
   let totalPrice = null;
   if (tax === 5) {
-    totalPrice = Math.round(discountedPrice * 1.05); // 5%
+    totalPrice = Math.floor(discountedPrice * 1.05); // 消費税5%
     console.log(totalPrice);
   } else if (tax === 8) {
-    totalPrice = Math.round(discountedPrice * 1.08); // 8%
+    totalPrice = Math.floor(discountedPrice * 1.08); // 消費税8%
     console.log(totalPrice);
   } else if (tax === 10) {
-    totalPrice = Math.round(discountedPrice * 1.1); // 10%
+    totalPrice = Math.floor(discountedPrice * 1.1); // 消費税10%
     console.log(totalPrice);
+  } else if(taxselect.value === '' || priceInput.value === '') { // 価格、税率が空欄の場合
+    alert('価格と税率の両方を入力してください');
+    return;
   } else {
     return;
   }
+
+  if (discount.value === '') { // 割引率空欄
+    alert('割引率を入力してください');
+    return;
+  } 
+
 
   resultDivision.innerText = '';
 
